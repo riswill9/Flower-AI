@@ -1,46 +1,67 @@
-import os
 import numpy as np
 import torch
-from PIL import Image
+import os
+import random
+from datetime import datetime
 
-from TAJNeuralNetwork import TAJNeuralNetwork
+from FLWRNeuralNetwork import preprocess, FLWRNeuralNetwork
 
-# turns this file into whatever we need it to do (crop, edit)
-def preprocess(f):
-    image = Image.open(f)
-    image = image.resize((64, 64))
-    a = np.array(image) / 255.0 # coverts array into numpy array
-    a = a.reshape( 64 * 64 * 3) #length time width times 3 for rgb scale
-    return a
 
-# directory = "datasets/train/mango"
-train = "datasets/train/"
+def get_label(f):
+    label = 0
+    temp = f.replace('.jpg', '.xml')
+    with open(temp, 'rt') as file:
+        content = file.read()
+        if '<name>jerry</name>' in content:
+            label = 1
+    return label
 
-types = ["tom", "jerry"]
 
-stop_at = 700
+epochs = 5
 
-n = TAJNeuralNetwork()
+n = FLWRNeuralNetwork()
 
-for i in range(len(types)):
-    directory = train + types[i]
-    counter = 0
-    for filename in os.listdir(directory):
-        counter = counter + 1
-        if counter == stop_at:
-            break
-        f = os.path.join(directory, filename)
-        if not os.path.isfile(f):
+
+print("Start:", datetime.now())
+
+directory = "datasets/train/"
+
+file_list = os.listdir(directory)
+
+
+for epoch in range(epochs):
+    
+    random.shuffle(file_list)
+
+    print("Epoch:", epoch)
+
+    flip = False
+    #if epoch % 2 == 1:
+    #   flip = True
+
+    count = 0
+    for filename in file_list:
+        if not filename.endswith(".jpg"):
             continue
 
-        print(f)
-        img = preprocess(f)
-        label = i
-            
-        targets = np.zeros(len(types))
-        targets[label] = 1.0
-    
+        f = directory + filename
+        #print(f)
+
+        img = preprocess(f, flip)
         
-        n.train(img, targets)
-        
-torch.save(n.state_dict(), 'tomAndJerry.pth')
+        target = np.zeros(1)
+        label = get_label(f)
+
+        if label == 1:
+            target[0] = 1.0
+
+        n.train(img, target)
+
+        count += 1
+        if count % 100 == 0:
+            print(count)
+
+      
+
+torch.save(n.state_dict(), 'TJ.pth')
+print("End:", datetime.now())

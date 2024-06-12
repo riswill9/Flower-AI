@@ -18,7 +18,7 @@ n.load_state_dict(torch.load('tomAndJerry.pth'))
 
 
 test = "datasets/test/"
-types = ["mango", "pineapple", "watermelon", "guava", "coconut"]
+types = ["tom", "jerry"]
 
 stop_at = 100
 

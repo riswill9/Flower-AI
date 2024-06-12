@@ -1,0 +1,26 @@
+<annotation>
+	<folder>train_frames</folder>
+	<filename>frame176.jpg</filename>
+	<path>C:\Users\boltuzamaki\Desktop\Hackerearth tom and jerry\frames\train_frames\frame176.jpg</path>
+	<source>
+		<database>Unknown</database>
+	</source>
+	<size>
+		<width>1280</width>
+		<height>720</height>
+		<depth>3</depth>
+	</size>
+	<segmented>0</segmented>
+	<object>
+		<name>tom</name>
+		<pose>Unspecified</pose>
+		<truncated>0</truncated>
+		<difficult>0</difficult>
+		<bndbox>
+			<xmin>292</xmin>
+			<ymin>233</ymin>
+			<xmax>447</xmax>
+			<ymax>318</ymax>
+		</bndbox>
+	</object>
+</annotation>

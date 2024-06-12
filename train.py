@@ -16,7 +16,7 @@ def preprocess(f):
 # directory = "datasets/train/mango"
 train = "datasets/train/"
 
-types = ["mango", "pineapple", "watermelon", "guava", "coconut"]
+types = ["tom", "jerry"]
 
 stop_at = 700
 

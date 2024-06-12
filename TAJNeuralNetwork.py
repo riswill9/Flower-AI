@@ -11,7 +11,7 @@ class TAJNeuralNetwork(nn.Module):
             nn.Sigmoid(), 
             nn.Linear(6000, 3000), 
             nn.Sigmoid(),
-            nn.Linear(3000, 5), 
+            nn.Linear(3000, 1), 
             nn.Sigmoid()
         )
         

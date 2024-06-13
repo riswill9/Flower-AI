@@ -7,61 +7,50 @@ from datetime import datetime
 from FLWRNeuralNetwork import preprocess, FLWRNeuralNetwork
 
 
-def get_label(f):
-    label = 0
-    temp = f.replace('.jpg', '.xml')
-    with open(temp, 'rt') as file:
-        content = file.read()
-        if '<name>jerry</name>' in content:
-            label = 1
-    return label
 
+directory = "dataset/test/"
 
-epochs = 5
+epochs = 1
 
 n = FLWRNeuralNetwork()
+n.load_state_dict(torch.load('fl.pth'))
 
+types = ["rose", "tulip", "water_lily"]
+num_classes = len(types)
 
-print("Start:", datetime.now())
-
-directory = "datasets/train/"
-
-file_list = os.listdir(directory)
-
-
-for epoch in range(epochs):
+file_lists = []
+for t in types:
+    dir = directory + t + '/'
+    files = os.listdir(dir)
+    file_lists.append(files)
     
-    random.shuffle(file_list)
 
-    print("Epoch:", epoch)
 
-    flip = False
-    #if epoch % 2 == 1:
-    #   flip = True
+total_labels = [0, 0, 0]
+total_correct = [0, 0, 0]
 
-    count = 0
-    for filename in file_list:
-        if not filename.endswith(".jpg"):
-            continue
+total = 0
+correct = 0
 
-        f = directory + filename
-        #print(f)
+for i in range(10):
+    for label in range(num_classes):
+        dir = directory + types[label] + '/'
+        files = file_lists[label]
+        f = dir + files[i]
 
-        img = preprocess(f, flip)
+        img = preprocess(f)
         
-        target = np.zeros(1)
-        label = get_label(f)
-
-        if label == 1:
-            target[0] = 1.0
-
-        n.train(img, target)
-
-        count += 1
-        if count % 100 == 0:
-            print(count)
-
-      
-
-torch.save(n.state_dict(), 'flower.pth')
-print("End:", datetime.now())
+        output = n.forward(img).detach()
+        guess = np.argmax(output)
+        
+        total += 1
+        total_labels[label] += 1
+        
+        if guess == label:
+            correct += 1
+            total_correct[label] += 1
+            
+            
+print("Accuract:", correct / total)
+print(total_labels)
+print(total_correct)

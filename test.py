@@ -19,7 +19,7 @@ def get_label(f):
 
 epochs = 5
 
-n = TJNeuralNetwork()
+n = FLWRNeuralNetwork()
 
 
 print("Start:", datetime.now())

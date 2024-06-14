@@ -12,6 +12,7 @@ CHANNELS = 3
 
 LAYER_1 = 1000
 LAYER_2 = 500
+LAYER_3 = 250
 
 device = torch.device('cpu')
 
@@ -36,7 +37,9 @@ class FLWRNeuralNetwork(nn.Module):
                 nn.Sigmoid(),
                 nn.Linear(LAYER_1, LAYER_2),
                 nn.Sigmoid(),
-                nn.Linear(LAYER_2, 3),
+                nn.Linear(LAYER_2, LAYER_3),
+                nn.Sigmoid(),
+                nn.Linear(LAYER_3, 3),
                 nn.Sigmoid()
             )
 

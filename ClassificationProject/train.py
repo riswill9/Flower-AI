@@ -8,9 +8,9 @@ from FLWRNeuralNetwork import preprocess, FLWRNeuralNetwork
 
 
 
-directory = "dataset/train/"
+directory = "ClassificationProject/dataset/train/"
 
-epochs = 1
+epochs = 3
 
 n = FLWRNeuralNetwork()
 

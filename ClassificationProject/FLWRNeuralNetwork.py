@@ -11,6 +11,7 @@ RESIZE_HEIGHT = 128
 CHANNELS = 3
 
 LAYER_1 = 1000
+LAYER_2 = 500
 
 device = torch.device('cpu')
 
@@ -33,13 +34,15 @@ class FLWRNeuralNetwork(nn.Module):
         self.model = nn.Sequential(
                 nn.Linear(RESIZE_HEIGHT * RESIZE_WIDTH * CHANNELS, LAYER_1),
                 nn.Sigmoid(),
-                nn.Linear(LAYER_1, 3),
+                nn.Linear(LAYER_1, LAYER_2),
                 nn.Sigmoid(),
+                nn.Linear(LAYER_2, 3),
+                nn.Sigmoid()
             )
 
         self.loss_function = nn.MSELoss()
 
-        self.optimiser = torch.optim.Adam(self.parameters(), lr=0.0001)
+        self.optimiser = torch.optim.Adam(self.parameters(), lr=0.00001)
 
         self.to(device)
 

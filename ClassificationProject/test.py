@@ -8,7 +8,7 @@ from FLWRNeuralNetwork import preprocess, FLWRNeuralNetwork
 
 
 
-directory = "dataset/test/"
+directory = "ClassificationProject/dataset/test/"
 
 epochs = 1
 

@@ -1,5 +1,5 @@
 # FLWR-AI
-## AI classification - is it Tom or Jerry?
+## AI classification - which flower is it?
 
 ### Project created for Pace Universitys Artificial Intelligence Internship Experience
 In this project we explore concepts within vast topics such as Deep Learning - Facial/Pattern Recognition & Classification

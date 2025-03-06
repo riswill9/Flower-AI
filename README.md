@@ -1,6 +1,6 @@
 **<ins>AI Flower Classification & Generation</ins>**
 
-**Hello!** My names Kerisa and this is a project my partner Jonathan Moore and I worked on for Pace University's **Artificial Intelligence Internship Experience!**
+**Hello!** My names Kerisa Williams and this is a project my partner Jonathan Moore and I worked on for Pace University's **Artificial Intelligence Internship Experience!**
 
 In order to complete this final project we:
 

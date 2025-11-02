@@ -6,7 +6,7 @@ In order to complete this final project we:
 
   * Implemented **deep learning** techniques to identify, sort, and generate Al-generated images of flowers by training a **neural network** with thousands of flower images, enhancing model accuracy and performance.
   * Utilized Python libraries such as NumPy and Pandas to preprocess datasets, manage data structures, and streamline workflow for efficient model development.
-  * Collaborated with a team using **Agile methodology**, including **scrumming and parallel programming**, to complete the final project and deliver a polished presentation.
+  * Collaborated with a team using **Agile methodology**, including **scrumming and parallel programming**, as well as coordinated development through **Git** and GitHub for efficient version control and simultaneous project contribution. All in order to complete the final project and deliver a polished presentation.
   * Leveraged Google Colab and Visual Studio Code for coding, testing, and debugging, ensuring smooth integration of tools and effective project execution
 
 
